@@ -1,7 +1,5 @@
 class Fila:
     def __init__(self):
-        # A fila será representada por uma lista interna
-        # Inicialmente a fila está vazia
         self.itens = []
 
     def is_vazia(self):
@@ -10,7 +8,6 @@ class Fila:
 
     def enfileirar(self, item):
         # Adiciona um item no final da fila
-        # A operação de enfileirar é realizada com o método append() da lista
         self.itens.append(item)
         print(f'Item {item} enfileirado. Fila: {self.itens}')
 
@@ -46,10 +43,12 @@ class Fila:
 # Exemplo de uso da fila
 fila = Fila()
 
-# Enfileirar alguns itens
-fila.enfileirar(10)  # Enfileira 10
-fila.enfileirar(20)  # Enfileira 20
-fila.enfileirar(30)  # Enfileira 30
+fila.enfileirar(10)  
+fila.enfileirar(20) 
+fila.enfileirar(30)  
+fila.enfileirar(40)  
+fila.enfileirar(80)  
+fila.enfileirar(70)  
 
 # Ver a frente da fila
 print(f'Frente da fila: {fila.frente()}')
@@ -69,4 +68,9 @@ fila.desenfileirar()  # Remove 30
 fila.desenfileirar()  # Tenta remover de uma fila vazia
 
 # Imprimir o estado da fila novamente
+fila.imprimir_fila()
+
+fila.desenfileirar()
+fila.desenfileirar()
+
 fila.imprimir_fila()
