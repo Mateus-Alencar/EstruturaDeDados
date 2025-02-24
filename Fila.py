@@ -7,12 +7,12 @@ class Fila:
         return len(self.itens) == 0
 
     def enfileirar(self, item):
-        # Adiciona um item no final da fila
+        # Adiciona um item no final da fila (***PUSH***)
         self.itens.append(item)
         print(f'Item {item} enfileirado. Fila: {self.itens}')
 
     def desenfileirar(self):
-        # Remove o item da frente da fila (primeiro item)
+        # Remove o item da frente da fila (primeiro item) (***POP***)
         if self.is_vazia():
             print("A fila está vazia. Não é possível desenfileirar.")
             return None
@@ -30,8 +30,22 @@ class Fila:
         return self.itens[0]  # O primeiro item da lista é o item da frente da fila
 
     def tamanho(self):
-        # Retorna o número de itens na fila
-        return len(self.itens)
+        contador = 0
+        aux = []
+    
+        # Desenfileira os itens para contar e os coloca na fila auxiliar
+        while not self.is_vazia():
+            item = self.desenfileirar()
+            aux.append(item)  
+            contador += 1  
+            
+        # Restaura os itens para a fila original
+        while aux:
+            item = aux.pop(0)  
+            self.enfileirar(item)  
+    
+        return contador
+
 
     def imprimir_fila(self):
         # Imprime os elementos da fila
@@ -67,6 +81,9 @@ fila.desenfileirar()  # Remove 20
 fila.desenfileirar()  # Remove 30
 fila.desenfileirar()  # Tenta remover de uma fila vazia
 
+# Verificar o tamanho da fila
+print(f'Tamanho da fila: {fila.tamanho()}')
+
 # Imprimir o estado da fila novamente
 fila.imprimir_fila()
 
@@ -74,3 +91,6 @@ fila.desenfileirar()
 fila.desenfileirar()
 
 fila.imprimir_fila()
+
+# Verificar o tamanho da fila
+print(f'Tamanho da fila: {fila.tamanho()}')
