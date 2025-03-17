@@ -1,72 +1,53 @@
-class Pilha:
-    def __init__(self):
-        # A pilha será representada por uma lista interna
-        # Inicialmente a pilha está vazia
-        self.itens = []
+# funcoes primitivas para manipulacao de pilha
 
-    def is_vazia(self):
-        # Retorna True se a pilha estiver vazia, caso contrário retorna False
-        return len(self.itens) == 0
+def push(p, v):  # p representa o repositorio-lista e v o valor a ser inserido
+    p.append(v)
 
-    def empilhar(self, item):
-        # Adiciona um item no topo da pilha
-        # A operação de empilhar é realizada com o método append() da lista
-        self.itens.append(item)
-        print(f'Item {item} empilhado. Pilha: {self.itens}')
+def pop(p):
+    return p.pop()
 
-    def desempilhar(self):
-        # Remove o item do topo da pilha
-        if self.is_vazia():
-            print("A pilha está vazia. Não é possível desempilhar.")
-            return None
-        else:
-            # O método pop() remove e retorna o último item da lista
-            item = self.itens.pop()
-            print(f'Item {item} desempilhado. Pilha: {self.itens}')
-            return item
+def vazia(p):
+    return False if p else True
 
-    def topo(self):
-        # Retorna o item do topo da pilha sem removê-lo
-        if self.is_vazia():
-            print("A pilha está vazia. Não há topo.")
-            return None
-        return self.itens[-1]  # O topo está no último índice da lista
+def mostraTopo(p):
+    if vazia(p):
+        print('A pilha esta vazia')
+    else:
+        v=pop(p)
+        push(p,v)
+        print(v)
 
-    def tamanho(self):
-        # Retorna o número de itens na pilha
-        return len(self.itens)
+def esvaziarPilha(p):
 
-    def imprimir_pilha(self):
-        # Imprime os elementos da pilha
-        if self.is_vazia():
-            print("A pilha está vazia.")
-        else:
-            print(f'Pilha: {self.itens}')
+    while not vazia(p):
+        pop(p)
 
-# Exemplo de uso da pilha
-pilha = Pilha()
+    print('a pilha ficou vazia')
 
-# Empilhar alguns itens
-pilha.empilhar(10)   # Empilha 10
-pilha.empilhar(20)   # Empilha 20
-pilha.empilhar(30)   # Empilha 30
+def mostraPilha(p):
 
-# Ver o topo da pilha
-print(f'Topo da pilha: {pilha.topo()}')
+    aux = []
+    while not vazia(p):
+        v = pop(p)
+        print(v)
+        push(aux, v)
+    while not vazia(aux):
+        v = pop(aux)
+        push(p, v)
 
-# Desempilhar um item
-pilha.desempilhar()   # Remove o item no topo
+p=[]
+mostraTopo(p)
+push(p,10)
+push(p,201)
+push(p,30)
+push(p,403)
+push(p,50)
+mostraTopo(p)
+print('Conteudo da pilha')
+mostraPilha(p)
+print(f'Valor retirado da pilha: {pop(p)}')
+print(f'Valor retirado da pilha: {pop(p)}')
+print(f'Valor retirado da pilha: {pop(p)}')
+esvaziarPilha(p)
+mostraTopo(p)
 
-# Imprimir o estado atual da pilha
-pilha.imprimir_pilha()
-
-# Verificar o tamanho da pilha
-print(f'Tamanho da pilha: {pilha.tamanho()}')
-
-# Desempilhar todos os itens
-pilha.desempilhar()   # Remove 20
-pilha.desempilhar()   # Remove 10
-pilha.desempilhar()   # Tenta remover da pilha vazia
-
-# Imprimir o estado da pilha novamente
-pilha.imprimir_pilha()
