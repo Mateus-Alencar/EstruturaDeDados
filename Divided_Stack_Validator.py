@@ -63,6 +63,6 @@ def is_balanceada(pilha):
     return True
         
     
-pilha=[]
+pilha=[1,2,3,3,2,1]
 print(tamanho_pilha(pilha))
 print(is_balanceada(pilha))
