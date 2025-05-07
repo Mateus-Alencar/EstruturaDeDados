@@ -28,7 +28,14 @@ def adicionarCompanhia(fila, nomeCompanhia):
     pushFila(filaVoos, dicComp)
     
 def adicionarVoo(fila, nomeCompanhia, codigo, destino, horario):
-    pass
+    dicVoo = {
+        "codigo":codigo,
+        "destino":destino,
+        "horario":horario
+    }
+    while not vazia_fila:
+        elemento = popFila(fila)
+    
 
 adicionarCompanhia(filaVoos, "123Milhas")
 adicionarCompanhia(filaVoos, "GOL")
@@ -36,5 +43,6 @@ adicionarCompanhia(filaVoos, "AZUL")
 
 for x in filaVoos:
     print(x)
+    print(x["nome"])
 
     
