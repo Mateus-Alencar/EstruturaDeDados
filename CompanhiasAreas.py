@@ -33,8 +33,16 @@ def adicionarVoo(fila, nomeCompanhia, codigo, destino, horario):
         "destino":destino,
         "horario":horario
     }
-    while not vazia_fila:
+    aux = []
+    while not vazia_fila(fila):
         elemento = popFila(fila)
+        pushFila(aux, elemento)
+        if elemento["nome"] == nomeCompanhia:
+            elemento["voo"] == dicVoo
+    while not vazia_fila(aux):
+        elemento = popFila(aux)
+        pushFila(fila, elemento)
+            
     
 
 adicionarCompanhia(filaVoos, "123Milhas")
