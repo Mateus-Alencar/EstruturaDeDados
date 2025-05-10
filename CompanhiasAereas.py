@@ -67,7 +67,7 @@ def push(p, v):
 def pop(p): # Retira o último que foi inserido na Pilha
     return p.pop()
 
-def vazia(p):
+def vazia_pilha(p):
     return False if p else True
     
 # Primitivas Fila 
@@ -80,14 +80,14 @@ def popFila(f): # Retira o primeiro elemento que foi colocado na Fila
 def vazia_fila(f):
     return False if f else True
     
-filaVoos = [] # Fila
+filaCompanhiasVoos = [] # Fila
 
 def adicionarCompanhia(fila, nomeCompanhia):
     dicComp = {
         "nome":  nomeCompanhia,
-        "voo":[]
-    } # Pilha
-    pushFila(filaVoos, dicComp)
+        "voo":[] # Pilha
+    }
+    pushFila(fila, dicComp)
     
 def adicionarVoo(fila, nomeCompanhia, codigo, destino, horario):
     dicVoo = {
@@ -100,19 +100,35 @@ def adicionarVoo(fila, nomeCompanhia, codigo, destino, horario):
         elemento = popFila(fila)
         pushFila(aux, elemento)
         if elemento["nome"] == nomeCompanhia:
-            elemento["voo"] == dicVoo
+            elemento["voo"] = dicVoo
     while not vazia_fila(aux):
         elemento = popFila(aux)
         pushFila(fila, elemento)
             
-    
+def atenderVoo(fila):
+    if vazia_fila(fila):
+        print("Fila de companhias vazia")
+        return
+    companhia = popFila(fila)
 
-adicionarCompanhia(filaVoos, "123Milhas")
-adicionarCompanhia(filaVoos, "GOL")
-adicionarCompanhia(filaVoos, "AZUL")
+    if vazia_pilha(companhia["voo"]):
+        print(f"A companhia {companhia["nome"]} não tem voos para atender.")
+        return
+    voo_atendido = pop(companhia["voo"])
+    print(f"Voo atendido da companhia {companhia['nome']}: {voo_atendido}")
+    if vazia_pilha(companhia["voo"]):
+        pushFila(fila, companhia)
+    else:
+        print(f"A companhia {companhia['nome']} foi removida da fila (sem voos restantes).")
 
-for x in filaVoos:
+adicionarCompanhia(filaCompanhiasVoos, "123Milhas")
+adicionarCompanhia(filaCompanhiasVoos, "GOL")
+adicionarCompanhia(filaCompanhiasVoos, "AZUL")
+
+adicionarVoo(filaCompanhiasVoos, "123Milhas", 123, "Brasilia", "12:40")
+
+for x in filaCompanhiasVoos:
     print(x)
-    print(x["nome"])
+    
 
     
