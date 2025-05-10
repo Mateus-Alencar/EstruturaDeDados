@@ -91,19 +91,18 @@ def adicionarCompanhia(fila, nomeCompanhia):
     
 def adicionarVoo(fila, nomeCompanhia, codigo, destino, horario):
     dicVoo = {
-        "codigo":codigo,
-        "destino":destino,
-        "horario":horario
+        "codigo": codigo,
+        "destino": destino,
+        "horario": horario
     }
     aux = []
     while not vazia_fila(fila):
         elemento = popFila(fila)
-        pushFila(aux, elemento)
         if elemento["nome"] == nomeCompanhia:
-            elemento["voo"] = dicVoo
+            push(elemento["voo"], dicVoo)  
+        pushFila(aux, elemento)
     while not vazia_fila(aux):
-        elemento = popFila(aux)
-        pushFila(fila, elemento)
+        pushFila(fila, popFila(aux))
             
 def atenderVoo(fila):
     if vazia_fila(fila):
@@ -112,11 +111,13 @@ def atenderVoo(fila):
     companhia = popFila(fila)
 
     if vazia_pilha(companhia["voo"]):
-        print(f"A companhia {companhia["nome"]} não tem voos para atender.")
+        print(f"A companhia {companhia['nome']} não tem voos para atender.")
         return
+
     voo_atendido = pop(companhia["voo"])
     print(f"Voo atendido da companhia {companhia['nome']}: {voo_atendido}")
-    if vazia_pilha(companhia["voo"]):
+
+    if not vazia_pilha(companhia["voo"]): 
         pushFila(fila, companhia)
     else:
         print(f"A companhia {companhia['nome']} foi removida da fila (sem voos restantes).")
@@ -126,6 +127,12 @@ adicionarCompanhia(filaCompanhiasVoos, "GOL")
 adicionarCompanhia(filaCompanhiasVoos, "AZUL")
 
 adicionarVoo(filaCompanhiasVoos, "123Milhas", 123, "Brasilia", "12:40")
+adicionarVoo(filaCompanhiasVoos, "123Milhas", 763, "São Paulo", "12:40")
+adicionarVoo(filaCompanhiasVoos, "GOL", 126, "Restinga", "12:40")
+adicionarVoo(filaCompanhiasVoos, "AZUL", 323, "Bielorussia", "12:40")
+
+atenderVoo(filaCompanhiasVoos)
+
 
 for x in filaCompanhiasVoos:
     print(x)
