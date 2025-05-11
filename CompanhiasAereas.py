@@ -156,7 +156,6 @@ def suspenderVoo(fila, nomeCompanhia, codigoVoo):
 
 def trocarVoos(fila, nomeCompanhia, codigo1, codigo2):
     fila_aux = []
-
     while not vazia_fila(fila):
         companhia = popFila(fila)
 
@@ -168,7 +167,7 @@ def trocarVoos(fila, nomeCompanhia, codigo1, codigo2):
             index = 0
             while not vazia_pilha(companhia["voo"]):
                 voo = pop(companhia["voo"])
-                pilha_temp.append(voo)
+                push(pilha_temp, voo)
                 if voo["codigo"] == codigo1:
                     voo1 = voo
                     pos1 = index
@@ -180,15 +179,13 @@ def trocarVoos(fila, nomeCompanhia, codigo1, codigo2):
             if voo1 and voo2:
                 pilha_temp[pos1], pilha_temp[pos2] = pilha_temp[pos2], pilha_temp[pos1]
 
-            for voo in reversed(pilha_temp):
-                push(companhia["voo"], voo)
+            while not vazia_pilha(pilha_temp):
+                push(companhia["voo"], pop(pilha_temp))
 
         pushFila(fila_aux, companhia)
 
     while not vazia_fila(fila_aux):
         pushFila(fila, popFila(fila_aux))
-
-
 
 
 def mostrarCompanhiaVoo(fila):
