@@ -154,8 +154,42 @@ def cancelarVoo(fila, nomeCompanhia, codigoVoo):
 def suspenderVoo(fila, nomeCompanhia, codigoVoo):
     pass
 
-def trocarVoos(fila, nomeCompanhia, codigoVoo1, codigoVoo2):
-    pass
+def trocarVoos(fila, nomeCompanhia, codigo1, codigo2):
+    fila_aux = []
+
+    while not vazia_fila(fila):
+        companhia = popFila(fila)
+
+        if companhia["nome"] == nomeCompanhia:
+            pilha_temp = []
+            voo1 = voo2 = None
+            pos1 = pos2 = -1
+
+            index = 0
+            while not vazia_pilha(companhia["voo"]):
+                voo = pop(companhia["voo"])
+                pilha_temp.append(voo)
+                if voo["codigo"] == codigo1:
+                    voo1 = voo
+                    pos1 = index
+                elif voo["codigo"] == codigo2:
+                    voo2 = voo
+                    pos2 = index
+                index += 1
+
+            if voo1 and voo2:
+                pilha_temp[pos1], pilha_temp[pos2] = pilha_temp[pos2], pilha_temp[pos1]
+
+            for voo in reversed(pilha_temp):
+                push(companhia["voo"], voo)
+
+        pushFila(fila_aux, companhia)
+
+    while not vazia_fila(fila_aux):
+        pushFila(fila, popFila(fila_aux))
+
+
+
 
 def mostrarCompanhiaVoo(fila):
     aux = []
@@ -232,7 +266,8 @@ mostrarCompanhiaVoo(filaCompanhiasVoos)
 print("*************************************************************")
 
 buscarVoosDestino(filaCompanhiasVoos, "São Paulo")
+trocarVoos(filaCompanhiasVoos, "GOL", 3885, 5435)
+mostrarCompanhiaVoo(filaCompanhiasVoos)
 
-    
 
     
