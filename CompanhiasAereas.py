@@ -1,3 +1,4 @@
+
 descricao='''
 Desenvolver um sistema de controle de voos em um aeroporto utilizando as estruturas de dados pilha e fila. A fila será
 utilizada para gerenciar as companhias aéreas na ordem do atendimento. A pilha ser utilizada para organizar os voos da
@@ -150,6 +151,44 @@ def cancelarVoo(fila, nomeCompanhia, codigoVoo):
     while not vazia_fila(aux):
         pushFila(fila, popFila(aux))
 
+def suspenderVoo(fila, nomeCompanhia, codigoVoo):
+    pass
+
+def trocarVoos(fila, nomeCompanhia, codigoVoo1, codigoVoo2):
+    pass
+
+def mostrarCompanhiaVoo(fila):
+    aux = []
+    while not vazia_fila(fila):
+        companhia = popFila(fila)
+        pushFila(aux, companhia)
+
+        print("-=-=-=-=-=-=-=-=")
+        print("Companhia:", companhia["nome"])
+        print("Voos programados:")
+        print("-=-=-=-=-=-=-=-=")
+
+        auxPilha = []
+        while not vazia_pilha(companhia["voo"]):
+            voo = pop(companhia["voo"])
+            print(f"  Código : {voo['codigo']}")
+            print(f"  Horário: {voo['horario']}")
+            print(f"  Destino: {voo['destino']}")
+            print("  -------------------")
+            push(auxPilha, voo)
+
+        while not vazia_pilha(auxPilha):
+            push(companhia["voo"], pop(auxPilha))
+
+    while not vazia_fila(aux):
+        pushFila(fila, popFila(aux))
+
+
+def buscarVoosDestino(fila, destino):
+    pass
+
+def mostrarEstatisticas(fila):
+    pass
 
 
 adicionarCompanhia(filaCompanhiasVoos, "123Milhas")
@@ -165,18 +204,13 @@ adicionarVoo(filaCompanhiasVoos, "GOL", 344365353, "Piaui", "12:40")
 adicionarVoo(filaCompanhiasVoos, "GOL", 3885, "Aparecida do Norte", "12:40")
 adicionarVoo(filaCompanhiasVoos, "GOL", 134153, "Sul", "12:40")
 
+#removerCompanhia(filaCompanhiasVoos, "AZUL")
 
+mostrarCompanhiaVoo(filaCompanhiasVoos)
 
-#atenderVoo(filaCompanhiasVoos)
-removerCompanhia(filaCompanhiasVoos, "AZUL")
-
-for x in filaCompanhiasVoos:
-    print(x)
-
-cancelarVoo(filaCompanhiasVoos, "GOL", 344365353)
+#cancelarVoo(filaCompanhiasVoos, "GOL", 344365353)
 print("*************************************************************")
-for x in filaCompanhiasVoos:
-    print(x)
+
     
 
     
