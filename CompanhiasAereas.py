@@ -185,7 +185,25 @@ def mostrarCompanhiaVoo(fila):
 
 
 def buscarVoosDestino(fila, destino):
-    pass
+    filaAux = []
+    while not vazia_fila(fila):
+        companhia = popFila(fila)
+        pushFila(filaAux, companhia)
+        pilha_voo = companhia["voo"]
+        aux_pilha_voo = []
+        while not vazia_pilha(pilha_voo):
+            voo = pop(pilha_voo)
+            if voo["destino"] == destino:
+                print(f"Companhia: {companhia['nome']} | Código: {voo['codigo']} | Horário: {voo['horario']}")
+            push(aux_pilha_voo, voo)
+        while not vazia_pilha(aux_pilha_voo):
+            push(pilha_voo, pop(aux_pilha_voo))
+
+    while not vazia_fila(filaAux):
+        pushFila(fila, popFila(filaAux))
+
+            
+
 
 def mostrarEstatisticas(fila):
     pass
@@ -195,14 +213,16 @@ adicionarCompanhia(filaCompanhiasVoos, "123Milhas")
 adicionarCompanhia(filaCompanhiasVoos, "GOL")
 adicionarCompanhia(filaCompanhiasVoos, "AZUL")
 
-adicionarVoo(filaCompanhiasVoos, "123Milhas", 123, "Brasilia", "12:40")
-adicionarVoo(filaCompanhiasVoos, "123Milhas", 763, "São Paulo", "12:40")
-adicionarVoo(filaCompanhiasVoos, "GOL", 122452346, "Restinga", "12:40")
-adicionarVoo(filaCompanhiasVoos, "AZUL", 324527, "Bielorussia", "12:40")
-adicionarVoo(filaCompanhiasVoos, "GOL", 88656, "Ceara", "12:40")
-adicionarVoo(filaCompanhiasVoos, "GOL", 344365353, "Piaui", "12:40")
+adicionarVoo(filaCompanhiasVoos, "123Milhas", 1203, "Brasilia", "12:40")
+adicionarVoo(filaCompanhiasVoos, "123Milhas", 7863, "São Paulo", "12:40")
+adicionarVoo(filaCompanhiasVoos, "GOL", 1246, "Restinga", "12:40")
+adicionarVoo(filaCompanhiasVoos, "AZUL", 3527, "Bielorussia", "12:40")
+adicionarVoo(filaCompanhiasVoos, "GOL", 8656, "Ceara", "12:40")
+adicionarVoo(filaCompanhiasVoos, "GOL", 7545, "Piaui", "12:40")
 adicionarVoo(filaCompanhiasVoos, "GOL", 3885, "Aparecida do Norte", "12:40")
-adicionarVoo(filaCompanhiasVoos, "GOL", 134153, "Sul", "12:40")
+adicionarVoo(filaCompanhiasVoos, "GOL", 5435, "Sul", "12:40")
+adicionarVoo(filaCompanhiasVoos, "123Milhas", 9765, "São Paulo", "12:40")
+adicionarVoo(filaCompanhiasVoos, "AZUL", 9637, "Piaui", "12:40")
 
 #removerCompanhia(filaCompanhiasVoos, "AZUL")
 
@@ -210,6 +230,8 @@ mostrarCompanhiaVoo(filaCompanhiasVoos)
 
 #cancelarVoo(filaCompanhiasVoos, "GOL", 344365353)
 print("*************************************************************")
+
+buscarVoosDestino(filaCompanhiasVoos, "São Paulo")
 
     
 
