@@ -122,18 +122,59 @@ def atenderVoo(fila):
     else:
         print(f"A companhia {companhia['nome']} foi removida da fila (sem voos restantes).")
 
+def removerCompanhia(fila, nomeCompanhia):
+    aux = []
+    while not vazia_fila(fila):
+        elemento = popFila(fila)
+        if elemento["nome"] != nomeCompanhia:
+            pushFila(aux, elemento)
+        else:
+            print(f"Companhia {elemento['nome']} retirada da lista!")
+    while not vazia_fila(aux):
+        elemento =  popFila(aux)
+        pushFila(fila, elemento)
+        
+def cancelarVoo(fila, nomeCompanhia, codigoVoo):
+    aux = []
+    while not vazia_fila(fila):
+        companhia = popFila(fila)
+        if companhia["nome"] == nomeCompanhia:
+            pilha_temporaria = []
+            while not vazia_pilha(companhia["voo"]):
+                voo = pop(companhia["voo"])
+                if voo["codigo"] != codigoVoo:
+                    push(pilha_temporaria, voo)
+            while not vazia_pilha(pilha_temporaria):
+                push(companhia["voo"], pop(pilha_temporaria))
+        pushFila(aux, companhia)
+    while not vazia_fila(aux):
+        pushFila(fila, popFila(aux))
+
+
+
 adicionarCompanhia(filaCompanhiasVoos, "123Milhas")
 adicionarCompanhia(filaCompanhiasVoos, "GOL")
 adicionarCompanhia(filaCompanhiasVoos, "AZUL")
 
 adicionarVoo(filaCompanhiasVoos, "123Milhas", 123, "Brasilia", "12:40")
 adicionarVoo(filaCompanhiasVoos, "123Milhas", 763, "São Paulo", "12:40")
-adicionarVoo(filaCompanhiasVoos, "GOL", 126, "Restinga", "12:40")
-adicionarVoo(filaCompanhiasVoos, "AZUL", 323, "Bielorussia", "12:40")
+adicionarVoo(filaCompanhiasVoos, "GOL", 122452346, "Restinga", "12:40")
+adicionarVoo(filaCompanhiasVoos, "AZUL", 324527, "Bielorussia", "12:40")
+adicionarVoo(filaCompanhiasVoos, "GOL", 88656, "Ceara", "12:40")
+adicionarVoo(filaCompanhiasVoos, "GOL", 344365353, "Piaui", "12:40")
+adicionarVoo(filaCompanhiasVoos, "GOL", 3885, "Aparecida do Norte", "12:40")
+adicionarVoo(filaCompanhiasVoos, "GOL", 134153, "Sul", "12:40")
 
-atenderVoo(filaCompanhiasVoos)
 
 
+#atenderVoo(filaCompanhiasVoos)
+removerCompanhia(filaCompanhiasVoos, "AZUL")
+
+for x in filaCompanhiasVoos:
+    print(x)
+
+cancelarVoo(filaCompanhiasVoos, "GOL", 344365353)
+print("*************************************************************")
 for x in filaCompanhiasVoos:
     print(x)
     
