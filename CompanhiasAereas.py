@@ -255,6 +255,7 @@ def buscarVoosDestino(fila, destino):
             
 def mostrarEstatisticas(fila):
     fila_aux = []
+    total_companhias = 0
     total_voos = 0
     maior_qtd_voos = 0
     companhia_mais_voos = None
@@ -262,17 +263,28 @@ def mostrarEstatisticas(fila):
     while not vazia_fila(fila):
         companhia = popFila(fila)
         pushFila(fila_aux, companhia)
+        total_companhias += 1
 
-        qtd_voos = len(companhia["voo"])
+        pilha_aux = []
+        qtd_voos = 0
+        while not vazia_pilha(companhia["voo"]):
+            voo = pop(companhia["voo"])
+            qtd_voos += 1
+            push(pilha_aux, voo)
+
+        while not vazia_pilha(pilha_aux):
+            push(companhia["voo"], pop(pilha_aux))
+
         total_voos += qtd_voos
 
         if qtd_voos > maior_qtd_voos:
             maior_qtd_voos = qtd_voos
             companhia_mais_voos = companhia["nome"]
 
-    print(f"Total de companhias: {len(fila_aux)}")
+    print(f"Total de companhias: {total_companhias}")
     print(f"Total de voos cadastrados: {total_voos}")
-    print(f"Companhia com maior número de voos: {companhia_mais_voos} ({maior_qtd_voos} voos)")
+    if companhia_mais_voos:
+        print(f"Companhia com maior número de voos: {companhia_mais_voos} ({maior_qtd_voos} voos)")
 
     while not vazia_fila(fila_aux):
         pushFila(fila, popFila(fila_aux))
