@@ -152,7 +152,26 @@ def cancelarVoo(fila, nomeCompanhia, codigoVoo):
         pushFila(fila, popFila(aux))
 
 def suspenderVoo(fila, nomeCompanhia, codigoVoo):
-    pass
+    primeiraAux = []
+    secAux = []
+    compAux = []
+    while not vazia_fila(fila):
+        comp = popFila(fila)
+        if comp['nome'] == nomeCompanhia:
+            while not vazia_pilha(comp['voo']):
+                vooComp = pop(comp['voo'])
+                if vooComp['codigo'] == codigoVoo:
+                    push(primeiraAux, vooComp)
+                    print(f"Voo {vooComp} adiado!")
+                else:
+                    push(secAux, vooComp)
+            push(comp['voo'], pop(primeiraAux))
+            while not vazia_pilha(secAux):
+                push(comp['voo'], pop(secAux))
+        pushFila(compAux, comp)
+    while not vazia_fila(compAux):
+        pushFila(fila, popFila(compAux))
+
 
 def trocarVoos(fila, nomeCompanhia, codigo1, codigo2):
     fila_aux = []
@@ -234,10 +253,30 @@ def buscarVoosDestino(fila, destino):
         pushFila(fila, popFila(filaAux))
 
             
-
-
 def mostrarEstatisticas(fila):
-    pass
+    fila_aux = []
+    total_voos = 0
+    maior_qtd_voos = 0
+    companhia_mais_voos = None
+
+    while not vazia_fila(fila):
+        companhia = popFila(fila)
+        pushFila(fila_aux, companhia)
+
+        qtd_voos = len(companhia["voo"])
+        total_voos += qtd_voos
+
+        if qtd_voos > maior_qtd_voos:
+            maior_qtd_voos = qtd_voos
+            companhia_mais_voos = companhia["nome"]
+
+    print(f"Total de companhias: {len(fila_aux)}")
+    print(f"Total de voos cadastrados: {total_voos}")
+    print(f"Companhia com maior número de voos: {companhia_mais_voos} ({maior_qtd_voos} voos)")
+
+    while not vazia_fila(fila_aux):
+        pushFila(fila, popFila(fila_aux))
+
 
 
 adicionarCompanhia(filaCompanhiasVoos, "123Milhas")
@@ -261,10 +300,12 @@ mostrarCompanhiaVoo(filaCompanhiasVoos)
 
 #cancelarVoo(filaCompanhiasVoos, "GOL", 344365353)
 print("*************************************************************")
-
-buscarVoosDestino(filaCompanhiasVoos, "São Paulo")
-trocarVoos(filaCompanhiasVoos, "GOL", 3885, 5435)
+suspenderVoo(filaCompanhiasVoos,"GOL",7545)
 mostrarCompanhiaVoo(filaCompanhiasVoos)
 
+#buscarVoosDestino(filaCompanhiasVoos, "São Paulo")
+#trocarVoos(filaCompanhiasVoos, "GOL", 3885, 5435)
+#mostrarCompanhiaVoo(filaCompanhiasVoos)
+mostrarEstatisticas(filaCompanhiasVoos)
 
     
