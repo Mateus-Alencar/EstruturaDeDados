@@ -1,3 +1,4 @@
+# Multiplicação Russa utilizando uma função recursiva.
 def multiplicacaoRussa(n,x):
     if n==0:
         return 0
