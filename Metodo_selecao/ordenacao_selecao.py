@@ -21,7 +21,26 @@ def selecao_ordenada (lis):
 
 print(selecao_ordenada([3,2,1,4,5,6,0,7,8,9,10]))
 # 2) Escreva uma versão do método de ordenação por seleção para receber
-# a quantidade de compações e de trocas realizadas durante a ordenação.
+# a quantidade de comparações e de trocas realizadas durante a ordenação.
 
 def selecao_ordenada_contador(lis):
-    pass
+    tamanho_lista = len(lis)
+    comparacoes = 0  # Contador de comparações
+    trocas = 0       # Contador de trocas
+
+    for posicao in range(tamanho_lista-1):
+        indice_menor = posicao
+        for indice in range(posicao+1, tamanho_lista):
+            comparacoes += 1  # Contabiliza cada comparação
+            if lis[indice] < lis[indice_menor]:
+                indice_menor = indice
+        if indice_menor != posicao:
+            trocas += 1
+            lis[posicao], lis[indice_menor] = lis[indice_menor], lis[posicao]
+
+    print("Trocas:", trocas)
+    print("Comparações:", comparacoes)
+    return lis
+
+print(selecao_ordenada_contador([3,2,1,4,5,6,0,7,8,9,10]))
+
