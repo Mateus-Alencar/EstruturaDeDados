@@ -58,3 +58,10 @@ arquivo sequencialmente várias vezes. Cada passagem consiste
 em comparar cada elemento no arquivo com seu sucessor (x[i] 
 com x[i + 1]) e trocar os dois elementos se eles não estiverem 
 na ordem correta.
+
+### Busca binária
+
+A busca binária é um algoritmo eficiente para encontrar um elemento em um vetor/lista ordenada.
+Ela funciona dividindo o vetor ao meio a cada passo, comparando o elemento do meio com o valor que você está procurando, e descartando a metade que não pode conter o valor. Isso reduz drasticamente o número de comparações, tornando a busca muito mais rápida que a busca linear.
+
+> O vetor/lista deve estar ordenada.
