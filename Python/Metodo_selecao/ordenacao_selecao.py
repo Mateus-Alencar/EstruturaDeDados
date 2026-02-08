@@ -1,3 +1,20 @@
+# Exemplo de código de uma ordenação por seleção
+def buscaMenor(arr):
+    menor = arr[0]
+    menor_indice = 0
+    for x in range(1, len(arr)):
+        if menor > arr[x]:
+            menor = arr[x]
+            menor_indice = x
+    return menor_indice
+def ordenacaoSelecao(arr):
+    novoArr=[]
+    for x in range(len(arr)):
+        menor = buscaMenor(arr)
+        novoArr.append(arr.pop(menor)) # Remove o menor elemento do array original e adiciona ao novo array
+    return novoArr
+
+print(ordenacaoSelecao([5, 3, 6, 2, 10]))
 # 1) Escreva uma versão do método de seleção para continuar com o processo
 # de ordenação apenas se o conjunto não estiver ordenado.
 
