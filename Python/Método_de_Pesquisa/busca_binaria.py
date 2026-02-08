@@ -1,3 +1,4 @@
+# A pesquisa binária é executada com tempo logarítmico. 
 def busca_binaria(vetor, alvo):
     inicio = 0
     fim = len(vetor) - 1
