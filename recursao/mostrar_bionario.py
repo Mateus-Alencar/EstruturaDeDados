@@ -10,4 +10,3 @@ def mostrar_binario(n):
 numero = int(input("Digite um número inteiro: "))
 print(f"Representação binária de {numero}: ", end='')
 mostrar_binario(numero)
-print()  

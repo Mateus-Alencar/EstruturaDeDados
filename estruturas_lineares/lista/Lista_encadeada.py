@@ -1,13 +1,3 @@
-descricao_lista_encadeada = 
-'''
-Uma lista encadeada é uma estrutura de dados linear que armazena uma sequência de elementos (nós), onde cada elemento aponta para o próximo da lista.
-Diferente de listas comuns (como arrays ou listas do Python), os elementos não estão em posições contíguas de memória. Em vez disso, cada elemento contém dois campos:
-
- - Valor (ou dado): a informação que está sendo armazenada.
- - Ponteiro (ou referência): aponta para o próximo nó da lista.
-'''
-
-
 class ListaNo:
 
     def __init__(self,info):

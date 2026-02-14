@@ -5,9 +5,9 @@
 #A função deve retornar True se a expressão for balanceada e False caso contrário.
 
 def push(pilha, valor):
-    pilha.append(valor)
+    pilha.append(valor) # Insere o elemento no final da lista
 def pop(pilha):
-    return pilha.pop()
+    return pilha.pop() # Remove e retorna o último item
 def is_Enpty(pilha):
     return False if pilha else True
     
