@@ -7,4 +7,14 @@ def multiplicacaoRussa(n,x):
     else:
         return multiplicacaoRussa(n//2, x*2)
         
-print(multiplicacaoRussa(42,35))
+def multiplicacaoRussa2(a,b):
+    resultado =0
+    while a > 0:
+        if a % 2 != 0:
+            resultado += b
+        a //= 2
+        b *= 2
+    return resultado
+
+print(multiplicacaoRussa(13,18))
+print(multiplicacaoRussa2(13, 18))

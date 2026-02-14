@@ -52,6 +52,12 @@ As estruturas de dados podem ser classificadas em lineares e não lineares.
 #### Recursão
 A recursão é tratada como qualquer outra chamada de função. Isso envolve guardar o estado atual do processamento de maneira que ela possa continuar de onde parou, quando a função estiver terminada. Guardar o estado de um processamento consome tempo e memória, por isso a recursão é usualmente tida como menos eficiente que a iteração (repetição).
 
+[Instrutivo sobre recursão com exemplos](./docs/funcoes_recursivas.md)
+- ##### Multiplicação Russa
+A Multiplicação Russa (também conhecida como multiplicação por duplicação e divisão por metade) é um método que permite multiplicar qualquer dois números inteiros usando apenas duas operações simples: dobrar e dividir por dois.
+
+![alt text](image.png)
+
 #### Ordenação
 - Ordenar corresponde ao processo de rearranjar um 
 conjunto de objetos em uma ordem ascendente ou 
@@ -64,12 +70,20 @@ Ordenação é o processo de rearranjar elementos em uma ordem crescente ou decr
 - ##### Bubble Sort
   - Percorre o vetor diversas vezes
   - Comparar elementos adjacentes e os troca se estiverem fora de ordem
+- ##### Quicksort
+  O algoritmo `quicksort` utiliza a técnica DC (Dividir para conquistar),   compostas pelos seguintes passos:
 
+  1. Descubra o caso-base, que deve ser o caso mais simples possível.
+  2. Descubra como reduzir o seu problema para que ele se torne o caso-base.
+
+  *'O algoritmo DC não é um simples algoritmo que você aplica em um problema, mas   sim uma maneira de pensar sobre o problema'*
 
 #### Busca binária
 
 A busca binária é um algoritmo eficiente para encontrar um elemento em um vetor/lista ordenada.
-Ela funciona dividindo o vetor ao meio a cada passo, comparando o elemento do meio com o valor que você está procurando, e descartando a metade que não pode conter o valor. Isso reduz drasticamente o número de comparações, tornando a busca muito mais rápida que a busca linear.
+Ela funciona dividindo o vetor ao meio a cada passo, comparando o elemento do meio com o valor que você está procurando, e descartando a metade que não pode conter o valor. Isso reduz o número de comparações, tornando a busca muito mais rápida que a busca linear.
 
 >[!WARNING] 
 >O vetor/lista deve estar ordenada.
+
+[Exemplo de código com busca binária](./algoritmos/busca/busca_binaria.py)

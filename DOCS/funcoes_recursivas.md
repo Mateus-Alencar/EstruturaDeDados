@@ -70,8 +70,8 @@ def contagem(n):
 ---
 
 ## 🔹 Desvantagens
-⚠️ Pode causar **estouro de pilha** se não houver caso base.  
-⚠️ Pode ser **menos eficiente** que uma solução iterativa (devido ao custo de chamadas de função).  
+- Pode causar **estouro de pilha** se não houver caso base.  
+- Pode ser **menos eficiente** que uma solução iterativa (devido ao custo de chamadas de função).  
 
 ---
 
