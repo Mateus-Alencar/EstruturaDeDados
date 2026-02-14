@@ -44,9 +44,9 @@ As estruturas de dados podem ser classificadas em lineares e não lineares.
 "*Utilizadas para representar hierarquias (como pastas de arquivos ou estruturas de diretórios)."*
 
 #### Tabelas Hash (Hash Tables)
-Associam chaves a valores por meio de uma função hash.
-Permitem acesso muito rápido aos dados (em média O(1)).
-Podem sofrer colisões, que precisam ser tratadas.
+- Associam chaves a valores por meio de uma função hash.
+- Permitem acesso muito rápido aos dados (em média O(1)).
+- Podem sofrer colisões, que precisam ser tratadas.
 
 ### Conceitos importantes relacionados
 #### Recursão
