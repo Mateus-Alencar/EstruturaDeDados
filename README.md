@@ -83,6 +83,9 @@ Ordenação é o processo de rearranjar elementos em uma ordem crescente ou decr
 A busca binária é um algoritmo eficiente para encontrar um elemento em um vetor/lista ordenada.
 Ela funciona dividindo o vetor ao meio a cada passo, comparando o elemento do meio com o valor que você está procurando, e descartando a metade que não pode conter o valor. Isso reduz o número de comparações, tornando a busca muito mais rápida que a busca linear.
 
+### Exemplos de tempos de execução
+![alt text](image-1.png)
+
 >[!WARNING] 
 >O vetor/lista deve estar ordenada.
 
