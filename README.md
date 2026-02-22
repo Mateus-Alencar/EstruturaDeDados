@@ -71,12 +71,15 @@ Ordenação é o processo de rearranjar elementos em uma ordem crescente ou decr
   - Percorre o vetor diversas vezes
   - Comparar elementos adjacentes e os troca se estiverem fora de ordem
 - ##### Quicksort
-  O algoritmo `quicksort` utiliza a técnica DC (Dividir para conquistar),   compostas pelos seguintes passos:
 
+  O algoritmo `quicksort` começa escolhendo um pivô, separa os menores e maiores que ele e ordena recursivamente as partes.
+
+  Ele utiliza a técnica DC (Dividir para conquistar), compostas pelos seguintes passos:
   1. Descubra o caso-base, que deve ser o caso mais simples possível.
   2. Descubra como reduzir o seu problema para que ele se torne o caso-base.
 
-  *'O algoritmo DC não é um simples algoritmo que você aplica em um problema, mas   sim uma maneira de pensar sobre o problema'*
+  >[!NOTE]  
+  >'O algoritmo DC não é um simples algoritmo que você aplica em um problema, mas sim uma maneira de pensar sobre o problema'*
 
 #### Busca binária
 
